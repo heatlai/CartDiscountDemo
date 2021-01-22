@@ -1,0 +1,15 @@
+{
+    "name": "heatlai/cart-discount-demo",
+    "autoload": {
+        "psr-4": {
+            "Heatlai\\CartDiscountDemo\\": "src/"
+        }
+    },
+    "require": {
+        "tightenco/collect": "^8.19"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "phpunit/phpunit": "^9.5"
+    }
+}
