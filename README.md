@@ -23,7 +23,7 @@ foreach ($products as $sku) {
 }
 
 // print results
-$cart->discountProcess()->print();
+$cart->print();
 ```
 
 ## Tests

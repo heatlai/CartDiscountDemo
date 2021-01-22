@@ -20,7 +20,6 @@ class CartTest extends TestCase {
         foreach ($products as $sku) {
             $cart->addProduct($sku);
         }
-        $cart->discountProcess();
 
         $this->assertEquals(15, $cart->totalPrice());
     }
@@ -36,7 +35,6 @@ class CartTest extends TestCase {
         foreach ($products as $sku) {
             $cart->addProduct($sku);
         }
-        $cart->discountProcess();
 
         $this->assertEquals(125, $cart->totalPrice());
     }
@@ -52,7 +50,6 @@ class CartTest extends TestCase {
         foreach ($products as $sku) {
             $cart->addProduct($sku);
         }
-        $cart->discountProcess();
 
         $this->assertEquals(true, $cart->getFreeProducts()->filter(function(Product $product){
             return $product->sku === 'B0003';
@@ -70,9 +67,6 @@ class CartTest extends TestCase {
         foreach ($products as $sku) {
             $cart->addProduct($sku);
         }
-        $cart->discountProcess();
-
-        $cart->print();
 
         $this->assertEquals(1, $cart->getFreeProducts()->filter(function(Product $product){
             return $product->sku === 'D0001';

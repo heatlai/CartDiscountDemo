@@ -32,5 +32,4 @@ $cart = new Cart($discountRules);
 foreach ($products as $sku) {
     $cart->addProduct($sku);
 }
-$cart->discountProcess();
 $cart->print();

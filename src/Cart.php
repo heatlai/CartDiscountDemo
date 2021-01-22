@@ -13,6 +13,7 @@ class Cart {
     /** @var Discount[] $discounts */
     public array $discounts = [];
     protected int $productIndex = 0;
+    public array $skus = [];
 
     public function __construct($discountRules)
     {
@@ -21,9 +22,9 @@ class Cart {
 
     public function addProduct($sku)
     {
-        $p = Product::findOrFail($sku);
-        $p->index = ++$this->productIndex;
-        $this->products[] = $p;
+        $this->skus[] = $sku;
+        $this->resetProducts();
+        $this->discountProcess();
     }
 
     public function getVisibleProducts(string $exclusiveTag = null): Collection
@@ -47,8 +48,23 @@ class Cart {
         return collect($this->discounts);
     }
 
-    public function discountProcess()
+    protected function resetProducts()
     {
+        // reset products state
+        $this->products = [];
+        $index = 0;
+        foreach ($this->skus as $skuId) {
+            $p = Product::findOrFail($skuId);
+            $p->index = ++$index;
+            $this->products[] = $p;
+        }
+    }
+
+    protected function discountProcess()
+    {
+        // reset
+        $this->discounts = [];
+
         // 跑折扣規則
         foreach ($this->getDiscountRules() as $discountRule) {
             /** @var Discount[] $discounts */
