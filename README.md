@@ -4,19 +4,17 @@
 
 ```php
 use Heatlai\CartDiscountDemo\Cart;
-use Heatlai\CartDiscountDemo\Rules\DiscountRule2;
+use Heatlai\CartDiscountDemo\Rules\DiscountRule3;
 
 $discountRules = [
-    new DiscountRule2('A0001', 2, 1), // 乖乖(五香) 買 2 送 1
+    new DiscountRule3('C0001', 1, 'B0003', 1), // 買 卡拉雞腿堡 1 件 送 蜂蜜牛奶 1 件
 ];
 
 $cart = new Cart($discountRules);
 
 // buy something
 $products = [
-    'A0001',
-    'A0001',
-    'A0001',
+    'C0001',
 ];
 foreach ($products as $sku) {
     $cart->addProduct($sku);
