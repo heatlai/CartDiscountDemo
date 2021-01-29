@@ -6,3 +6,5 @@ yarn-error.log
 .phpunit.result.cache
 /html-coverage
 /coverage.txt
+
+.idea
